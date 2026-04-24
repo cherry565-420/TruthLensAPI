@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TruthLens – Intelligent Fake Content Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="background-effects">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <header>
+        <div class="logo">
+            <i class="fa-solid fa-eye logo-icon"></i>
+            <h1>TruthLens</h1>
+        </div>
+        <p class="subtitle">Intelligent Fake Content Detection System</p>
+    </header>
+
+    <main class="container">
+        <div class="tabs">
+            <button class="tab-btn active" data-target="image-section">
+                <i class="fa-solid fa-image"></i> Image
+            </button>
+            <button class="tab-btn" data-target="video-section">
+                <i class="fa-solid fa-video"></i> Video
+            </button>
+            <button class="tab-btn" data-target="document-section">
+                <i class="fa-solid fa-file-pdf"></i> Document
+            </button>
+        </div>
+
+        <div class="content-wrapper glass-panel">
+            <div class="loading-overlay" id="loading-overlay" style="display: none;">
+                <div class="radar-spinner"></div>
+                <h3 class="scanning-text">Initializing Neural Scan...</h3>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+            </div>
+
+            <section id="image-section" class="module-section active">
+                <h2>Image Analysis</h2>
+                <div class="upload-area" id="image-drop">
+                    <input type="file" id="image-input" accept="image/jpeg, image/png, image/webp" hidden>
+                    <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                    <p>Drag & Drop or <span>Browse</span></p>
+                </div>
+                <div class="preview-area" id="image-preview-container" style="display: none;">
+                    <img id="image-preview" src="">
+                </div>
+                <button class="analyze-btn" id="analyze-image-btn" disabled>
+                    Analyze Image <i class="fa-solid fa-bolt"></i>
+                </button>
+            </section>
+
+            <section id="video-section" class="module-section">
+                <h2>Video Analysis</h2>
+                <div class="upload-area" id="video-drop">
+                    <input type="file" id="video-input" accept="video/mp4, video/webm" hidden>
+                    <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                    <p>Drag & Drop or <span>Browse</span></p>
+                </div>
+                <div class="preview-area" id="video-preview-container" style="display: none;">
+                    <video id="video-preview" controls></video>
+                </div>
+                <button class="analyze-btn" id="analyze-video-btn" disabled>
+                    Analyze Video <i class="fa-solid fa-bolt"></i>
+                </button>
+            </section>
+
+            <section id="document-section" class="module-section">
+                <h2>Document Analysis</h2>
+                <div class="upload-area" id="document-drop">
+                    <input type="file" id="document-input" accept=".pdf,.doc,.docx" hidden>
+                    <i class="fa-solid fa-cloud-arrow-up upload-icon"></i>
+                    <p>Drag & Drop or <span>Browse</span></p>
+                </div>
+                <div class="preview-area doc-preview" id="document-preview-container" style="display: none;">
+                    <i class="fa-solid fa-file-contract huge-icon"></i>
+                    <h3 id="doc-filename"></h3>
+                </div>
+                <button class="analyze-btn" id="analyze-doc-btn" disabled>
+                    Analyze Document <i class="fa-solid fa-bolt"></i>
+                </button>
+            </section>
+
+            <div class="result-screen" id="result-screen" style="display: none;">
+                <div class="result-header">
+                    <h2>Analysis Complete</h2>
+                    <div class="badge" id="result-badge"></div> 
+                </div>
+                
+                <div class="result-stats">
+                    <div class="stat-box">
+                        <span class="stat-label">Confidence Score</span>
+                        <div class="circular-progress" id="confidence-circle">
+                            <span id="confidence-text"></span>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-label">Analysis Method</span>
+                        <h4 id="method-text"></h4> 
+                    </div>
+                </div>
+                
+                <div class="explanation-box">
+                    <i class="fa-solid fa-microchip ai-icon"></i>
+                    <p id="explanation-text"></p>
+                </div>
+
+                <button class="reset-btn" id="reset-btn">
+                    <i class="fa-solid fa-rotate-right"></i> Process Another File
+                </button>
+            </div>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
