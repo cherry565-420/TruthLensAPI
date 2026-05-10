@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const API_BASE = 'http://127.0.0.1:5005';
+    const API_BASE = '';
     
     // State management
     let currentFiles = {

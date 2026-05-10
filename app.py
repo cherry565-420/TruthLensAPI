@@ -1,6 +1,7 @@
 import os
 import requests
 import cv2
+
 from flask import Flask, render_template, request, jsonify
 from dotenv import load_dotenv
 
@@ -109,5 +110,7 @@ def analyze_document():
         "explanation": f"Digital signature and font consistency check: {status}."
     })
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5005)
+if __name__ == "__main__":
+    # Render provides the PORT as an environment variable
+    port = int(os.environ.get("PORT", 5005))
+    app.run(host='0.0.0.0', port=port)
