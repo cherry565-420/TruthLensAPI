@@ -14,6 +14,7 @@ if not os.path.exists(UPLOAD_FOLDER): os.makedirs(UPLOAD_FOLDER)
 # HARDCODED KEYS (Use these directly since os.getenv was failing)
 # This tries to get the key from the system/Render, 
 # but uses your hardcoded key if it's missing.
+# HARDCODED KEYS
 API_USER = os.getenv('SIGHTENGINE_USER', '1208752896')
 API_SECRET = os.getenv('SIGHTENGINE_SECRET', 'VWNFCGN6S5i7qARrt9D5Aue76CAg8Sfh')
 
